@@ -77,12 +77,12 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>J:\tools\cgal\CGAL-5.4.1\auxiliary\gmp\include;J:\tools\cgal\CGAL-5.4.1\include;J:\tools\boost\boost_1_79_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\CGAL-5.4.1\auxiliary\gmp\include;C:\CGAL-5.4.1\include;C:\boost_1_79_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>J:\tools\cgal\CGAL-5.4.1\auxiliary\gmp\lib;J:\tools\cgal\CGAL-5.4.1\lib;J:\tools\boost\boost_1_79_0\stage\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\CGAL-5.4.1\auxiliary\gmp\lib;C:\CGAL-5.4.1\lib;C:\boost_1_79_0\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>libgmp-10.lib;libmpfr-4.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -95,14 +95,14 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>J:\tools\cgal\CGAL-5.4.1\auxiliary\gmp\include;J:\tools\cgal\CGAL-5.4.1\include;J:\tools\boost\boost_1_79_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\CGAL-5.4.1\auxiliary\gmp\include;C:\CGAL-5.4.1\include;C:\boost_1_79_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>J:\tools\cgal\CGAL-5.4.1\auxiliary\gmp\lib;J:\tools\cgal\CGAL-5.4.1\lib;J:\tools\boost\boost_1_79_0\stage\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\CGAL-5.4.1\auxiliary\gmp\lib;C:\CGAL-5.4.1\lib;C:\boost_1_79_0\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>libgmp-10.lib;libmpfr-4.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -113,12 +113,12 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>J:\tools\cgal\CGAL-5.4.1\auxiliary\gmp\include;J:\tools\cgal\CGAL-5.4.1\include;J:\tools\boost\boost_1_79_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\CGAL-5.4.1\auxiliary\gmp\include;C:\CGAL-5.4.1\include;C:\boost_1_79_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>J:\tools\cgal\CGAL-5.4.1\auxiliary\gmp\lib;J:\tools\cgal\CGAL-5.4.1\lib;J:\tools\boost\boost_1_79_0\stage\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\CGAL-5.4.1\auxiliary\gmp\lib;C:\CGAL-5.4.1\lib;C:\boost_1_79_0\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>libgmp-10.lib;libmpfr-4.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -131,14 +131,14 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>J:\tools\cgal\CGAL-5.4.1\auxiliary\gmp\include;J:\tools\cgal\CGAL-5.4.1\include;J:\tools\boost\boost_1_79_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\CGAL-5.4.1\auxiliary\gmp\include;C:\CGAL-5.4.1\include;C:\boost_1_79_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>J:\tools\cgal\CGAL-5.4.1\auxiliary\gmp\lib;J:\tools\cgal\CGAL-5.4.1\lib;J:\tools\boost\boost_1_79_0\stage\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\CGAL-5.4.1\auxiliary\gmp\lib;C:\CGAL-5.4.1\lib;C:\boost_1_79_0\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>libgmp-10.lib;libmpfr-4.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>

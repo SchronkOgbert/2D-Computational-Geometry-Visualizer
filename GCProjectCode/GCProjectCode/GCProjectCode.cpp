@@ -14,5 +14,6 @@ int main()
     for (int i = 0; i < ptr - result; i++) {
         std::cout << result[i] << std::endl;
     }
+    system("pause");
     return 0;
 }
