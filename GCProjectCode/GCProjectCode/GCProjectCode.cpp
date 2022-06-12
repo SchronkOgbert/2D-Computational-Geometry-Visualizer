@@ -1,23 +1,18 @@
 #include <iostream>
-#include <boost/asio.hpp>
-#include <boost/numeric/ublas/vector.hpp>
+#include <CGAL/Exact_predicates_inexact_constructions_kernel.h>
+#include <CGAL/convex_hull_2.h>
+
+typedef CGAL::Exact_predicates_inexact_constructions_kernel K;
+typedef K::Point_2 Point_2;
 
 int main()
 {
-    boost::asio::io_context io;
-    boost::numeric::ublas::vector<int> v(3);
-    v[0] = 9;
-    v.resize(10);
-    std::cout << v[0] << '\n';
-    std::cout << v.size() << '\n';
-    v.insert_element(3, 23);
-    std::cout << v.size() << '\n';
-
-    auto timer = boost::asio::steady_timer(io,
-        boost::asio::chrono::seconds(1));
-
-    std::cout << "Start\n";
-    io.run();
-    timer.wait();
-    std::cout << "Stop\n";
+    Point_2 points[5] = { Point_2(0,0), Point_2(10,0), Point_2(10,10), Point_2(6,5), Point_2(4,1) };
+    Point_2 result[5];
+    const Point_2* ptr = CGAL::convex_hull_2(points, points + 5, result);
+    std::cout << ptr - result << " points on the convex hull:" << std::endl;
+    for (int i = 0; i < ptr - result; i++) {
+        std::cout << result[i] << std::endl;
+    }
+    return 0;
 }
