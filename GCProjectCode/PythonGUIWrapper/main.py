@@ -26,6 +26,9 @@ class Point2D:
     def __hash__(self):
         return hash(self.__str__())
 
+    def to_arg(self):
+        return f'{self.x} {self.y}'
+
 
 # variables
 pygame.display.set_caption('2D Geometry Visualizer')
