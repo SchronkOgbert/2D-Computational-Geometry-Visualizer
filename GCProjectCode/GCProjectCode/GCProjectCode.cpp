@@ -80,7 +80,7 @@ int main(int argc, char* argv[])
     //std::cout << ptr - result << " points on the convex hull:" << std::endl;
     for (int i = 0; i < ptr - result; i++)
     {
-        std::cout << result[i] << std::endl;
+        std::cout << result[i] << '\n';
     }
     delete[] result;
 
