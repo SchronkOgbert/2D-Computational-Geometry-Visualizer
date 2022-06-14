@@ -4,7 +4,13 @@ import pygame
 # constants
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
+GREEN = (0, 170, 0)
+YELLOW = (170, 170, 0)
+RED = (170, 0, 0)
+BLUE = (0, 0, 170)
 WIDTH, HEIGHT = 1280, 720
+
+COLORS = [GREEN, YELLOW, RED, BLUE]
 
 
 # classes
@@ -20,7 +26,8 @@ class Point2D:
         return self.__str__()
 
     def __eq__(self, other):
-        return self.x == other.x and self.y == other.y
+        if abs(self.x - other.x) < 10 and abs(self.y - other.y) < 10: return True
+        return False
 
     def __hash__(self):
         return hash(self.__str__())
@@ -31,12 +38,11 @@ class Point2D:
 
 # functions
 def add_point(points, x, y):
-    init_size = len(points)
     buffer = Point2D(x, y)
-    points.add(buffer)
-    if len(points) == init_size:
+    if buffer in points:
         print(f'point {buffer} already exists')
         return
+    points.append(buffer)
     print(f'added point {buffer}')
 
 
@@ -75,9 +81,9 @@ def calculate_convex_layers(points):
     return layers
 
 
-def draw_polygon(screen, pts):
+def draw_polygon(screen, pts, color = BLACK):
     if not len(pts): return
     for i in range(len(pts) - 1):
-        pygame.draw.line(screen, BLACK, (pts[i].x, pts[i].y), (pts[i + 1].x, pts[i + 1].y), 3)
+        pygame.draw.line(screen, color, (pts[i].x, pts[i].y), (pts[i + 1].x, pts[i + 1].y), 4)
     if pts[0] != pts[-1]:
-        pygame.draw.line(screen, BLACK, (pts[0].x, pts[0].y), (pts[-1].x, pts[-1].y), 3)
+        pygame.draw.line(screen, color, (pts[0].x, pts[0].y), (pts[-1].x, pts[-1].y), 4)
