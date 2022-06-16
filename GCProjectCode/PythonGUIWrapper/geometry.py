@@ -7,8 +7,9 @@ BLACK = (0, 0, 0)
 GREEN = (0, 170, 0)
 YELLOW = (170, 170, 0)
 RED = (170, 0, 0)
-BLUE = (0, 0, 170)
-WIDTH, HEIGHT = 1280, 720
+BLUE = (0, 128, 255)
+LIGHT_BLUE = (51,187,255)
+WIDTH, HEIGHT = 1600, 900
 
 COLORS = [GREEN, YELLOW, RED, BLUE]
 
@@ -39,11 +40,12 @@ class Point2D:
 # functions
 def add_point(points, x, y):
     buffer = Point2D(x, y)
+    if y < 200: return
     if buffer in points:
-        print(f'point {buffer} already exists')
+        # print(f'point {buffer} already exists')
         return
     points.append(buffer)
-    print(f'added point {buffer}')
+    # print(f'added point {buffer}')
 
 
 def make_command_line_args(pts):
