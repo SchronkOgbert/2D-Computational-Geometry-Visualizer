@@ -66,7 +66,8 @@ def calculate_convex_layer(pts):
             values = point_row.split(' ')
             res.append(Point2D(int(values[0]), int(values[1])))
     except Exception as e:
-        print(e)
+        pass
+        # print(e)
     return res
 
 
