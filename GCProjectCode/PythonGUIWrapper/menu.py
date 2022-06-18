@@ -12,6 +12,7 @@ class Actions:
     DRAW_CONVEX_HULL = False
     DRAW_CONVEX_LAYERS = False
     CLEAR_SCREEN = False
+    REMOVE_POINTS = False
 
 
 default_font = pygame.font.SysFont(None, 24)
@@ -32,10 +33,12 @@ class Menu:
         self.convex_hull_btn = None
         self.convex_layers_btn = None
         self.clear_screen_btn = None
+        self.remove_points_btn = None
         self.add_points_btn_color = Menu.NORMAL_BUTTON_COLOR
         self.convex_hull_btn_color = Menu.NORMAL_BUTTON_COLOR
         self.convex_layers_btn_color = Menu.NORMAL_BUTTON_COLOR
         self.clear_screen_btn_color = Menu.NORMAL_BUTTON_COLOR
+        self.remove_points_btn_color = Menu.NORMAL_BUTTON_COLOR
 
     def _render_add_points(self, screen):
         text_obj = default_font.render('Add Points', True, BLACK)
@@ -55,19 +58,27 @@ class Menu:
 
     def _render_convex_layers(self, screen):
         text_obj = default_font.render('Convex Hull Layers', True, BLACK)
-        self.convex_layers_btn = button = pygame.Rect(200, 32, BUTTON_WIDTH * 1.5, BUTTON_HEIGHT)
+        self.convex_layers_btn = button = pygame.Rect(200, 100, BUTTON_WIDTH * 1.5, BUTTON_HEIGHT)
         pygame.draw.rect(screen, self.convex_layers_btn_color, button)
         for i in range(4):
-            pygame.draw.rect(screen, (128, 128, 128), (200 - i, 32 - i, BUTTON_WIDTH * 1.5, BUTTON_HEIGHT), 1)
-        screen.blit(text_obj, (200 + BUTTON_WIDTH / 4 - len('Add Points'), 36 + BUTTON_HEIGHT / 4))
+            pygame.draw.rect(screen, (128, 128, 128), (200 - i, 100 - i, BUTTON_WIDTH * 1.5, BUTTON_HEIGHT), 1)
+        screen.blit(text_obj, (200 + BUTTON_WIDTH / 4 - len('Add Points'), 104 + BUTTON_HEIGHT / 4))
 
     def _render_clear_screen(self, screen):
         text_obj = default_font.render('Clear', True, BLACK)
-        self.clear_screen_btn = button = pygame.Rect(200, 100, BUTTON_WIDTH, BUTTON_HEIGHT)
+        self.clear_screen_btn = button = pygame.Rect(200, 32, BUTTON_WIDTH, BUTTON_HEIGHT)
         pygame.draw.rect(screen, self.clear_screen_btn_color, button)
         for i in range(4):
-            pygame.draw.rect(screen, (128, 128, 128), (200 - i, 100 - i, BUTTON_WIDTH, BUTTON_HEIGHT), 1)
-        screen.blit(text_obj, (200 + BUTTON_WIDTH / 4 - len('Add Points'), 104 + BUTTON_HEIGHT / 4))
+            pygame.draw.rect(screen, (128, 128, 128), (200 - i, 32 - i, BUTTON_WIDTH, BUTTON_HEIGHT), 1)
+        screen.blit(text_obj, (200 + BUTTON_WIDTH / 4 - len('Add Points'), 36 + BUTTON_HEIGHT / 4))
+
+    def _render_remove_points(self, screen):
+        text_obj = default_font.render('Remove Points', True, BLACK)
+        self.remove_points_btn = button = pygame.Rect(368, 32, BUTTON_WIDTH * 1.2, BUTTON_HEIGHT)
+        pygame.draw.rect(screen, self.remove_points_btn_color, button)
+        for i in range(4):
+            pygame.draw.rect(screen, (128, 128, 128), (368 - i, 32 - i, BUTTON_WIDTH * 1.2, BUTTON_HEIGHT), 1)
+        screen.blit(text_obj, (368 + BUTTON_WIDTH / 4 - len('Add Points'), 36 + BUTTON_HEIGHT / 4))
 
     def _check_mouse(self):
         if pygame.mouse.get_pressed()[0]:
@@ -88,6 +99,8 @@ class Menu:
             Actions.ADD_POINTS = not Actions.ADD_POINTS
             if Actions.ADD_POINTS:
                 self.add_points_btn_color = Menu.PRESSED_BUTTON_COLOR
+                Actions.REMOVE_POINTS = False
+                self.remove_points_btn_color = Menu.NORMAL_BUTTON_COLOR
             else:
                 self.add_points_btn_color = Menu.NORMAL_BUTTON_COLOR
 
@@ -111,8 +124,21 @@ class Menu:
         if self.mouse_released:
             self.clear_screen_btn_color = Menu.NORMAL_BUTTON_COLOR
         if pygame.Rect(self.clear_screen_btn).collidepoint(pygame.mouse.get_pos()):
-            Actions.CLEAR_SCREEN = self.mouse_released
+            if self.mouse_released:
+                Actions.CLEAR_SCREEN = True
+                Actions.REMOVE_POINTS = False
+                self.remove_points_btn_color = Menu.NORMAL_BUTTON_COLOR
             if self.mouse_clicked: self.clear_screen_btn_color = Menu.PRESSED_BUTTON_COLOR
+
+    def _check_remove_points_clicked(self):
+        if pygame.Rect(self.remove_points_btn).collidepoint(pygame.mouse.get_pos()):
+            Actions.REMOVE_POINTS = not Actions.REMOVE_POINTS
+            if Actions.REMOVE_POINTS:
+                self.remove_points_btn_color = Menu.PRESSED_BUTTON_COLOR
+                Actions.ADD_POINTS = False
+                self.add_points_btn_color = Menu.NORMAL_BUTTON_COLOR
+            else:
+                self.convex_layers_btn_color = Menu.NORMAL_BUTTON_COLOR
 
     def tick(self):
         self._check_mouse_released()
@@ -122,6 +148,7 @@ class Menu:
             self._check_convex_hull_clicked()
             self._check_convex_layers_clicked()
             self._check_clear_pressed()
+            self._check_remove_points_clicked()
         if self.mouse_released:
             self._check_clear_pressed()
 
@@ -131,3 +158,4 @@ class Menu:
         self._render_convex_hull(screen)
         self._render_convex_layers(screen)
         self._render_clear_screen(screen)
+        self._render_remove_points(screen)

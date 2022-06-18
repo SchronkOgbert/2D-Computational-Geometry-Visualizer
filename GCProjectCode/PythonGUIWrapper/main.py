@@ -31,9 +31,12 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             exit()
-        if pygame.mouse.get_pressed()[0] and not previous_mouse_state and Actions.ADD_POINTS:
+        if pygame.mouse.get_pressed()[0] and not previous_mouse_state:
             # print('calculating layers')
-            add_point(points, *pygame.mouse.get_pos())
+            if Actions.ADD_POINTS:
+                add_point(points, *pygame.mouse.get_pos())
+            elif Actions.REMOVE_POINTS:
+                remove_point(points, pygame.mouse.get_pos())
         if Actions.DRAW_CONVEX_LAYERS:
             convex_layers = calculate_convex_layers(points)
         elif Actions.DRAW_CONVEX_HULL:

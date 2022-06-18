@@ -8,7 +8,7 @@ GREEN = (0, 170, 0)
 YELLOW = (170, 170, 0)
 RED = (170, 0, 0)
 BLUE = (0, 128, 255)
-LIGHT_BLUE = (51,187,255)
+LIGHT_BLUE = (51, 187, 255)
 WIDTH, HEIGHT = 1600, 900
 
 COLORS = [GREEN, YELLOW, RED, BLUE]
@@ -36,6 +36,9 @@ class Point2D:
     def to_arg(self):
         return f'{self.x} {self.y}'
 
+    def collide(self, coords: tuple):
+        return self.x + 10 >= coords[0] >= self.x - 10 and self.y + 10 >= coords[1] >= self.y - 10
+
 
 # functions
 def add_point(points, x, y):
@@ -46,6 +49,12 @@ def add_point(points, x, y):
         return
     points.append(buffer)
     # print(f'added point {buffer}')
+
+
+def remove_point(points: list, position: tuple):
+    for point in points:
+        if Point2D(point.x, point.y).collide(position):
+            points.remove(point)
 
 
 def make_command_line_args(pts):
@@ -84,7 +93,7 @@ def calculate_convex_layers(points):
     return layers
 
 
-def draw_polygon(screen, pts, color = BLACK):
+def draw_polygon(screen, pts, color=BLACK):
     if not len(pts): return
     for i in range(len(pts) - 1):
         pygame.draw.line(screen, color, (pts[i].x, pts[i].y), (pts[i + 1].x, pts[i + 1].y), 4)
