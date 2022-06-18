@@ -1,3 +1,6 @@
+"""
+god forgive the poor soul that has to read this code
+"""
 from geometry import Point2D
 from geometry import WIDTH, BLACK, LIGHT_BLUE, BLUE
 import pygame
